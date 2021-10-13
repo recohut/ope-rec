@@ -1,9 +1,9 @@
 format: jb-book
-root: docs/L343703_OPE
+root: L343703_OPE
 parts:
 - caption: Tutorials
   chapters:
-  - file: docs/T257798_Off_Policy_Learning_in_Two_stage_Recommender_Systems.ipynb
-  - file: docs/T601959_Evaluating_a_New_Fraud_Policy_with_DM_IPW_and_DR_Methods.ipynb
-  - file: docs/T792262_Optimal_Off_Policy_Evaluation_from_Multiple_Logging_Policies.ipynb
-  - file: docs/T890478_Batch_Learning_from_Bandit_Feedback.ipynb
+  - file: T257798_Off_Policy_Learning_in_Two_stage_Recommender_Systems
+  - file: T601959_Evaluating_a_New_Fraud_Policy_with_DM_IPW_and_DR_Methods
+  - file: T792262_Optimal_Off_Policy_Evaluation_from_Multiple_Logging_Policies
+  - file: T890478_Batch_Learning_from_Bandit_Feedback
