@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Off-policy Evaluation &#8212; ope-rec</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Off-Policy Learning in Two-stage Recommender Systems" href="T257798_Off_Policy_Learning_in_Two_stage_Recommender_Systems.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">ope-rec</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1 current">
+  <a class="reference internal" href="#">
+   Off-policy Evaluation
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="T257798_Off_Policy_Learning_in_Two_stage_Recommender_Systems.html">
+   Off-Policy Learning in Two-stage Recommender Systems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="T601959_Evaluating_a_New_Fraud_Policy_with_DM_IPW_and_DR_Methods.html">
+   Evaluating a New Fraud Policy with DM, IPW, and DR Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="T792262_Optimal_Off_Policy_Evaluation_from_Multiple_Logging_Policies.html">
+   Optimal Off-Policy Evaluation from Multiple Logging Policies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="T890478_Batch_Learning_from_Bandit_Feedback.html">
+   Batch Learning from Bandit Feedback (BLBF)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/L343703_OPE.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/sparsh-ai/ope-rec/main?urlpath=tree/docs/L343703_OPE.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/sparsh-ai/ope-rec/blob/main/docs/L343703_OPE.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ope-on-real-world-problems-can-get-hard-fast">
+   <strong>
+    OPE on real world problems can get hard fast
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#intuition">
+   Intuition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-definition">
+   Problem definition
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="off-policy-evaluation">
+<h1>Off-policy Evaluation<a class="headerlink" href="#off-policy-evaluation" title="Permalink to this headline">¶</a></h1>
+<p>Many real-world recommender systems need to be highly scalable: matching millions of items with billions of users, with milliseconds latency. The scalability requirement has led to widely used two-stage recommender systems, consisting of efficient candidate generation model(s) in the first stage and a more powerful ranking model in the second stage.</p>
+<p>Logged user feedback, e.g., user clicks or dwell time, are often used to build both candidate generation and ranking models for recommender systems. While it’s easy to collect large amount of such data, they are inherently biased because the feedback can only be observed on items recommended by the previous systems. Recently, off-policy correction on such biases have attracted increasing interest in the field of recommender system research.</p>
+<p>You’re probably wasting time, resources, and revenue running unnecessary A/B tests. Offline policy evaluation can predict how changes to your production systems will affect metrics and help you A/B test only the most promising changes. Just like A/B tests became standard practice in the 2010s, offline policy evaluation (OPE) is going to become standard practice in the 2020s as part of every experimentation stack.</p>
+<p>In machine learning jargon, decision making systems are called “policies”. A policy simply takes in some context (e.g. time of day) and outputs a decision (e.g. send a push notification). A perfectly data-driven company would measure the impact of any and every change to a policy.</p>
+<p>Some domains need OPE more than others as the risk level of deploying a bad policy varies by problem space. While sending some annoying push notifications might not be too big of a deal, deploying a bad fraud policy or loan approval policy can lead to severely negative outcomes like financial loss or unfair bias.</p>
+<p>Offline policy evaluation (OPE) is an active area of research in reinforcement learning. The aim, in a contextual bandit setting, is to take bandit data generated by some policy (let’s call it the production policy) and estimate the value of a new candidate policy offline. The use case is clear: before you deploy a policy, you want to estimate its performance, and compare to what’s already deployed.</p>
+<p>Decision-making algorithms (e.g. contextual bandit algorithms) are designed to interact with the real world in an automated way. However, care must be taken in how these algorithms are deployed, because their automated nature means that errors can lead to runaway algorithms, with adverse consequences. We would like to have the ability to evaluate how an algorithm will perform, without the risk of deploying a poorly performing algorithm to a production system. The ability to rapidly iterate such a process would also help optimise the algorithm, as different parameters could be tuned quickly without the risk of harm to the production system.</p>
+<p>While the most accurate demonstration of how an automated algorithm will perform is to actually deploy it, there are often circumstances where this is impractical. An alternative approach is to create a simulation of the environment that the algorithm will interact with. However, these environments are typically highly complex, and creating unbiased simulations of them is not feasible.</p>
+<p>Instead of relying on simulation, a simpler approach is to apply the algorithm to historical data, which is a technique called <em>off-policy evaluation</em>.</p>
+<p>The goal of off-policy evaluation (OPE) is to estimate the expected reward of a new policy over the evaluation data, and that of off-policy learning (OPL) is to find a new policy that maximizes the expected reward over the evaluation data. Although the standard OPE and OPL assume the same distribution of covariate between the historical and evaluation data, a covariate shift often exists, i.e., the distribution of the covariate of the historical data is different from that of the evaluation data.</p>
+<p>The earliest OPE methods rely on classical importance sampling to handle the distribution mismatch between the target and behavior policies (<a class="reference external" href="https://scholarworks.umass.edu/cgi/viewcontent.cgi?article=1079&amp;context=cs_faculty_pubs">Precup et al., 2000</a>). Many advanced OPE methods have since been proposed for both contextual bandits and reinforcement learning settings.</p>
+<p><center><img src='https://s3.us-west-2.amazonaws.com/secure.notion-static.com/f18a6d4b-645b-44ba-9405-1bbd228325a9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211013%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211013T071627Z&X-Amz-Expires=86400&X-Amz-Signature=ac12c08537d0592ebf09b608a4a598eb96a6bf84c46b924b2443ebeb540b5c21&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22'><br>Categorization of OPE methods. Some methods are direct but have IPS influence and thus fit slightly away from the direct methods axis.</center></p><p>The setting is of particular interest in recommendation systems (e.g., movie recommendations at Netflix), in which the logged actions are recommended items (e.g., movies) and the logged rewards capture a metric of interest (e.g., watch time). Off-policy evaluation allows testing a much larger number of candidate policies than would be possible by online A/B testing.</p>
+<p>Off-policy Evaluation (OPE), or offline evaluation in general, evaluates the performance of hypothetical policies leveraging only offline log data. It is particularly useful in applications where the online interaction involves high stakes and expensive setting such as precision medicine and recommender systems.</p>
+<p>In contextual bandits, a learning algorithm repeatedly observes a context, takes an action, and observes a reward for the chosen action. An example is content personalization: the context describes a user, actions are candidate stories, and the reward measures how much the user liked the recommended story. In essence, the algorithm is a policy that picks the best action given a context.</p>
+<p>Given different policies, the metric of interest is their reward. One way to measure the reward is to deploy such policy online and let it choose actions (for example, recommend stories to users). However, such online evaluation can be costly for two reasons: It exposes users to an untested, experimental policy; and it doesn’t scale to evaluating multiple target policies.</p>
+<p>The alternative is off-policy evaluation: Given data logs collected by using a logging policy, off-policy evaluation can estimate the expected rewards for different target policies and provide confidence intervals around such estimates.</p>
+<p>In supervised learning settings, the standard approach to offline evaluation is to train on a train set and estimate generalisation performance on a holdout set. In online learning settings, one typically uses progressive validation. In contextual bandit settings, neither is directly possible, because like all reinforcement learning, there is a partial information problem: you never get to see rewards of actions you didn’t take. Your only source of information is the bandit data generated by your production policy, which might make entirely different choices than your candidate policy.</p>
+<p>It doesn’t, then, seem possible to reliably evaluate contextual bandit policies offline. But it is! The key is to use estimators that fill in fake rewards for actions that weren’t taken, thereby creating a “fake” supervised learning dataset, against which you can estimate performance, either using progressive validation (more on that later) or a holdout set.</p>
+<p>VW implements several estimators to reduce policy evaluation to supervised learning-type evaluation. The simplest method, the direct method (DM), simply trains a regression model that estimates the cost (negative reward) of an (action, context) pair. As you might suspect, this method is generally biased, because the partial information problem means you typically see many more rewards for good actions than bad ones (assuming your production policy is working normally). Biased estimators should not be used for offline policy evaluation, but VW implements provably unbiased estimators like inverse propensity weighting (IPS) and doubly robust (DR) that can be used for this purpose.</p>
+<p>Finally, before we get into how to run offline policy evaluation in VW, note that in this tutorial, by policies we mean contextual bandit models, not the exploration layer (e.g. epsilon-greedy) that is usually part of a contextual bandit system to tackle the explore-exploit tradeoff.</p>
+<p>For now, If you wish to evaluate the performance of the entire loop (model + exploration), please refer to the documentation for <strong><code class="docutils literal notranslate"><span class="pre">--explore_eval</span></code></strong>. It is useful if you want to understand how different types of exploration might lead to better future rewards in an online learning bandit system.</p>
+<p>We study decision making in environments where the reward is only partially observed, but can be modeled as a function of an action and an observed context. This setting, known as contextual bandits, encompasses a wide variety of applications including health-care policy and Internet advertising. A central task is evaluation of a new policy given historic data consisting of contexts, actions and received rewards. The key challenge is that the past data typically does not faithfully represent proportions of actions taken by a new policy. Previous approaches rely either on models of rewards or models of the past policy. The former are plagued by a large bias whereas the latter have a large variance.</p>
+<p>We study decision making in environments where we receive feedback only for chosen actions. For example, in Internet advertising, we find only whether a user clicked on some of the presented ads, but receive no information about the ads that were not presented. In health care, we only find out success rates for patients who received the treatments, but not for the alternatives. Both of these problems are instances of contextual bandits (Auer et al., 2002; Langford &amp; Zhang, 2008). The context refers to additional information about the user or patient. Here, we focus on the offline version: we assume access to historic data, but no ability to gather new data (Langford et al., 2008; Strehl et al., 2011).</p>
+<p>Two basic kinds of approaches address offline learning in contextual bandits. The first, which we call the direct method (DM), estimates the reward function from given data and uses this estimate in place of actual reward to evaluate the policy value on a set of contexts. The second kind, called inverse propensity score (IPS) (Horvitz &amp; Thompson, 1952), uses importance weighting to correct for the incorrect proportions of actions in the historic data. The first approach requires an accurate model of rewards, whereas the second approach requires an accurate model of the past policy. In general, it might be difficult to accurately model rewards, so the first assumption can be too restrictive. On the other hand, it is usually possible to model the past policy quite well. However, the second kind of approach often suffers from large variance especially when the past policy differs significantly from the policy being evaluated.</p>
+<p>Doubly Robust is a statistical approach for estimation from incomplete data with an important property: if either one of the two estimators (in DM and IPS) is correct, then the estimation is unbiased. This method thus increases the chances of drawing reliable inference.</p>
+<p>For this discussion, the decision-making algorithms we are primarily interested in are contextual bandit algorithms. Here, the task is to sequentially observe a <em>context</em> and choose an appropriate <em>action</em>, with the goal of maximising some <em>reward</em>. The <em>context</em> refers to the input data available to the algorithm to make a decision, and <em>action</em> refers to an option chosen by the algorithm (based on the input context). The <em>reward</em> is the measure by which the algorithm is evaluated.</p>
+<p>For example, the algorithm’s task on a news website might be to observe user demographic and behavioural attributes (context) and recommend news articles (actions) with the goal of maximising the click-through rate (reward).</p>
+<p>For decision-making algorithms, a <em>policy</em> is a mapping between the algorithm’s past observations and current context to an action recommendation. Note that policies can be deterministic (the same context would receive the same action every time) or probabilistic (the same context would only have some probability of receiving the same action every time). The goal of policy evaluation is to estimate the expected total reward of a given policy.</p>
+<p>Suppose we have a stream of instances (with context data associated with each instance) and policy 1 has been deployed on this stream. This means that it recommends actions for each instance (based the associated context data), and there is a log of the corresponding rewards for each instance. Calculating the total reward in this situation would be called “on-policy evaluation”. Now suppose we apply a different policy 2 to this stream of instances (with associated context data). Since it is a different policy, it may or may not recommend the same action for instances with the same context data. We are effectively creating a synthetic dataset, representing the counterfactual log we would have collected if policy 2 had been deployed. Estimating the total reward of this synthetic dataset is called “off-policy evaluation”, as illustrated below.</p>
+<p><center><img src='https://s3.us-west-2.amazonaws.com/secure.notion-static.com/3fc98315-18d5-4a2f-8ffe-4043f5065378/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211013%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211013T071649Z&X-Amz-Expires=86400&X-Amz-Signature=756ae44b626f3de7e9894e14ab4e9c2bd4ec0681f1691519ee3aa6d656a1cfe7&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22'></center></p><p>Practitioners can improve their automated decision making systems using online/batch bandit policies implemented in the policy module. Moreover, they can easily evaluate such bandit policies using historical logged bandit feedback data and OPE without A/B testing. Specifically, one can implement OPE of batch bandit algorithms with the standard OPE procedure</p>
+<div class="section" id="ope-on-real-world-problems-can-get-hard-fast">
+<h2><strong>OPE on real world problems can get hard fast</strong><a class="headerlink" href="#ope-on-real-world-problems-can-get-hard-fast" title="Permalink to this headline">¶</a></h2>
+<p>As with any good data science problem, OPE can get much more challenging to do well as you apply it to more complicated problems. Real-world problems may have some — or god help us, all — of the elements below:</p>
+<ul class="simple">
+<li><p><strong>Huge action spaces:</strong> Many recommender systems have tons of content that could be recommended at any given time, meaning the action space could be really large (not just “send” or “don’t send”). In these cases actions are typically described by a set of features, just as the context is. Figuring out how to score actions, which actions to score, and how many actions to score in this case is another “fun” research problem.</p></li>
+<li><p><strong>Slate ranking:</strong> Often in the case of ranking problems you don’t just pick the single best piece of content. Usually, you are picking a “slate” of items (e.g. the top “N”). Facebook newsfeed, Netflix, Reddit, and YouTube all work like this. The OPE methods above work well when you are trying to evaluate the effect of picking 1 action, but what happens when you need to pick the best slate of “N” actions? Luckily, enough crazy researchers work on this stuff and Langford et al come to the rescue with <a class="reference external" href="https://papers.nips.cc/paper/2017/file/5352696a9ca3397beb79f116f3a33991-Paper.pdf">Off-policy evaluation for slate recommendation</a> <a class="reference external" href="https://emojipedia.org/folded-hands/">🙏</a>.</p></li>
+<li><p><strong>Sequential problems:</strong> Above we focused on non-sequential decision making problems, typically solved with contextual bandits or rules-based systems. That is, we ignored optimizing over a “sequence” of decisions as you would do in a reinforcement learning setup. OPE methods must be adjusted when policies are optimizing over a sequence of actions.</p></li>
+</ul>
+</div>
+<div class="section" id="intuition">
+<h2>Intuition<a class="headerlink" href="#intuition" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we have a policy P1 in production and following data was logged:</p>
+<p>All labels (ground-truth): 0️⃣1️⃣1️⃣0️⃣1️⃣0️⃣0️⃣1️⃣1️⃣0️⃣. This reward is based on the actions of P1.</p>
+<p>Now, if we want to train a new policy, we will split this logged data into train and test as follows:</p>
+<p>0️⃣1️⃣1️⃣0️⃣1️⃣0️⃣0️⃣1️⃣1️⃣0️⃣. The new policy will use first 7 labels as training labels and try to minimize the loss by predicting the last 3 labels. Whatever the performance though, it is on the historical dataset and it is possible that the environment is changed now. So how to know if our policy will be as effective it was on the historical data. The best option at the moment is to perform A/B and MAB tests.</p>
+<p>But, these are costly and time-consuming, so we devised some techniques to reduce the time and cost by heuristically gaining some insights to help us decide if it is worth moving to A/B and MAB tests or there is still some room of improvement in the policy design. This new and emerging field of techniques are known as Off-policy evaluation (OPE) a.k.a Counterfactual policy evaluation (CPE).</p>
+<p><center><img src='https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9d72b33c-10ca-427a-953f-5b7c4a4264f3/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211013%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211013T071731Z&X-Amz-Expires=86400&X-Amz-Signature=112995100893b1631d2ae8a0e5eb7a9311fd393ac0091cfd7c75ae4aa650d245&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22'></center></p></div>
+<div class="section" id="problem-definition">
+<h2>Problem definition<a class="headerlink" href="#problem-definition" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(\mathcal{X}\)</span> be an input space and <span class="math notranslate nohighlight">\(\mathcal{A} = \{1,...,k\}\)</span> a finite action space. A contextual bandit problem is specified by a distribution <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> over pairs <span class="math notranslate nohighlight">\((x,\vec{r})\)</span> where <span class="math notranslate nohighlight">\(x \in \mathcal{X}\)</span> is the context and <span class="math notranslate nohighlight">\(\vec{r} \in [0,1]^\mathcal{A}\)</span> is a vector of rewards. The input data has been generated using some unknown policy (possibly adaptive and randomized) as follows:</p>
+<p><center><img src='https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c130e016-ba44-4832-bcd9-a84d5f9e88d9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20211013%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211013T071755Z&X-Amz-Expires=86400&X-Amz-Signature=b4408cbcda51616c674329a9c6b2de11a5bf4668363fe9ac81c4d494ab9ac2de&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22'></center></p><p>Note that neither the distribution D nor the policy p is known. Given a data set S collected as above, we are interested in two tasks: policy evaluation and policy optimization. In policy evaluation, we are interested in estimating the value of a stationary policy π. On the other hand, the goal of policy optimization is to find an optimal policy with maximum value.</p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "sparsh-ai/ope-rec",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+     <div id="next">
+        <a class="right-next" href="T257798_Off_Policy_Learning_in_Two_stage_Recommender_Systems.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Off-Policy Learning in Two-stage Recommender Systems</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Sparsh A.<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
