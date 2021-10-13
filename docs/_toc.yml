@@ -1,0 +1,6 @@
+format: jb-book
+root: index
+parts:
+- caption: Tutorials
+  chapters:
+  - file: nbs/US780867_Transformer_based_Recommenders
