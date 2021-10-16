@@ -17,3 +17,15 @@ parts:
   - file: C862189_Direct_method
   - file: C674274_Inverse_Propensity_Weighting
   - file: C235655_Doubly_Robust
+- caption: Tutorials
+  chapters:
+  - file: T167249_Offline_Policy_Evaluation_with_VW_Command_Line
+  - file: T966055_OBP_Library_Workshop_Tutorials
+  - file: T601959_Evaluating_a_New_Fraud_Policy_with_DM,_IPW,_and_DR_Methods
+  - file: T874693_Evaluating_Standard_Off_Policy_Estimators_with_Small_Sample_Open_Bandit_Dataset
+  - file: T705904_Evaluation_of_Multiple_Off_Policy_Estimators_on_Synthetic_Dataset
+  - file: T257798_Off_Policy_Learning_in_Two_stage_Recommender_Systems
+  - file: T890478_Batch_Learning_from_Bandit_Feedback_(BLBF)
+  - file: T902666_Evaluating_the_Robustness_of_Off_Policy_Evaluation
+  - file: T471827_Adaptive_Estimator_Selection_for_Off_Policy_Evaluation
+  - file: T792262_Optimal_Off_Policy_Evaluation_from_Multiple_Logging_Policies
