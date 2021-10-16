@@ -4,3 +4,7 @@ parts:
 - caption: Concepts
   chapters:
   - file: L978189_Counterfactual_Policy_Evaluation
+- caption: Models
+  chapters:
+  - file: C862189_Direct_method
+  - file: C674274_Inverse_Propensity_Weighting
