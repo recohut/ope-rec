@@ -4,7 +4,16 @@ parts:
 - caption: Concepts
   chapters:
   - file: L978189_Counterfactual_Policy_Evaluation
+  - file: L845850_Evaluating_non_stationary_policies
+  - file: L036590_Online_vs_Offline_Evaluation
+- caption: Datasets
+  chapters:
+  - file: L410896_Open_Bandit_Dataset
+- caption: Tools
+  chapters:
+  - file: L910228_OBP_Library
 - caption: Models
   chapters:
   - file: C862189_Direct_method
   - file: C674274_Inverse_Propensity_Weighting
+  - file: C235655_Doubly_Robust
