@@ -1,0 +1,411 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counterfactual policy evaluation &#8212; ope-rec</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Off-Policy Evaluation" href="US773842_Off_Policy_Evaluation.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">ope-rec</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="US773842_Off_Policy_Evaluation.html">
+   Off-Policy Evaluation
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Concepts
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Counterfactual policy evaluation
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/L978189_Counterfactual_Policy_Evaluation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/sparsh-ai/ope-rec/main?urlpath=tree/docs/L978189_Counterfactual_Policy_Evaluation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/sparsh-ai/ope-rec/blob/main/docs/L978189_Counterfactual_Policy_Evaluation.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-formulation-contextual-bandits">
+   General Formulation: Contextual Bandits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dm-vs-ips-bias-variance-trade-off">
+   DM vs IPS: Bias-Variance Trade-off
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cips-and-snips-techniques-to-contain-the-ips-large-weights">
+   CIPS and SNIPS - techniques to contain the IPS large weights
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-of-ope-estimators">
+   Summary of OPE Estimators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combinatorial-action">
+   Combinatorial Action
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ips-iips-and-rips">
+     IPS, IIPS and RIPS
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-compare-ope-opl-methods-in-experiments">
+     How to compare OPE/OPL methods in Experiments?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="counterfactual-policy-evaluation">
+<h1>Counterfactual policy evaluation<a class="headerlink" href="#counterfactual-policy-evaluation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="general-formulation-contextual-bandits">
+<h2>General Formulation: Contextual Bandits<a class="headerlink" href="#general-formulation-contextual-bandits" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Observes context vector <span class="math notranslate nohighlight">\(x\)</span> (e.g., user info)</p></li>
+<li><p>Policy π selects an action <span class="math notranslate nohighlight">\(y\)</span> (e.g., recommend specific item)</p></li>
+<li><p>Observes reward/feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span> (e.g., click indicator)</p></li>
+</ol>
+<p><center><img src='_images/L978189_1.png'></center></p>
+<p>Music voice assistant</p>
+<p>Context <span class="math notranslate nohighlight">\(x\)</span>: User and speech</p>
+<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Track that is played</p>
+<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Listened to the end</p>
+<p>Netflix banner</p>
+<p>Context <span class="math notranslate nohighlight">\(x\)</span>: User profile, time of day, day of week</p>
+<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Movie to put in banner</p>
+<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Click, complete views, etc.</p>
+<p>YouTube recommendations</p>
+<p>Context <span class="math notranslate nohighlight">\(x\)</span>: Current video, user demographics, past interactions</p>
+<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Ranking of recommended videos</p>
+<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Click, downstream dwell time, etc.</p>
+<p>News recommender</p>
+<p>Context <span class="math notranslate nohighlight">\(x\)</span>: User</p>
+<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Portfolio of news articles</p>
+<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Reading time in minutes</p>
+<p>Hiring</p>
+<p>Context <span class="math notranslate nohighlight">\(x\)</span>: Set of candidates, job description</p>
+<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Person that is hired</p>
+<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Job performance of <span class="math notranslate nohighlight">\(y\)</span></p>
+<p>Medical</p>
+<p>Context <span class="math notranslate nohighlight">\(x\)</span>: Diagnostics</p>
+<p>Action <span class="math notranslate nohighlight">\(y\)</span>: BP/Stent/Drugs</p>
+<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Survival</p>
+<p>Search engine</p>
+<p>Context <span class="math notranslate nohighlight">\(x\)</span>: Query</p>
+<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Ranking</p>
+<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Clicks on SERP</p>
+<p>Ad placement</p>
+<p>Context <span class="math notranslate nohighlight">\(x\)</span>: User, page</p>
+<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Placed Ad</p>
+<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Click/No click</p>
+<p>Online retail</p>
+<p>Context <span class="math notranslate nohighlight">\(x\)</span>: Category</p>
+<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Tile layout</p>
+<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Purchases</p>
+<p>Streaming media</p>
+<p>Context <span class="math notranslate nohighlight">\(x\)</span>: User</p>
+<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Carousel layout</p>
+<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Plays</p>
+</div>
+<div class="section" id="dm-vs-ips-bias-variance-trade-off">
+<h2>DM vs IPS: Bias-Variance Trade-off<a class="headerlink" href="#dm-vs-ips-bias-variance-trade-off" title="Permalink to this headline">¶</a></h2>
+<p><center><img src='_images/L978189_2.png'></center></p>
+</div>
+<div class="section" id="cips-and-snips-techniques-to-contain-the-ips-large-weights">
+<h2>CIPS and SNIPS - techniques to contain the IPS large weights<a class="headerlink" href="#cips-and-snips-techniques-to-contain-the-ips-large-weights" title="Permalink to this headline">¶</a></h2>
+<p><center><img src='_images/L978189_3.png'></center></p>
+<p><center><img src='_images/L978189_4.png'></center></p>
+<p><center><img src='_images/L978189_5.png'></center></p>
+<p><center><img src='_images/L978189_6.png'></center></p>
+<p><center><img src='_images/L978189_7.png'></center></p>
+<p><center><img src='_images/L978189_8.png'></center></p>
+<p><center><img src='_images/L978189_9.png'></center></p>
+<p>DM vs IPS vs CIPS vs SNIPS (varying sample size).</p>
+</div>
+<div class="section" id="summary-of-ope-estimators">
+<h2>Summary of OPE Estimators<a class="headerlink" href="#summary-of-ope-estimators" title="Permalink to this headline">¶</a></h2>
+<p><center><img src='_images/L978189_10.png'></center></p>
+<p><center><img src='_images/L978189_11.png'></center></p>
+</div>
+<div class="section" id="combinatorial-action">
+<h2>Combinatorial Action<a class="headerlink" href="#combinatorial-action" title="Permalink to this headline">¶</a></h2>
+<p>In practice, the action space is often combinatorial, and a policy has to choose a set of (discrete) actions at the same time:</p>
+<p><center><img src='_images/L978189_12.png'></center></p>
+<p>We have to modify the formulation a little bit, to adjust to the combinatorial setting:</p>
+<p><center><img src='_images/L978189_13.png'></center></p>
+<p>Even in the combinatorial action setting, we can (naively) use the IPS estimator to get unbiased/consistent estimate:</p>
+<p><center><img src='_images/L978189_14.png'></center></p>
+<p><center><img src='_images/L978189_15.png'></center></p>
+<p><center><img src='_images/L978189_16.png'></center></p>
+<div class="section" id="ips-iips-and-rips">
+<h3>IPS, IIPS and RIPS<a class="headerlink" href="#ips-iips-and-rips" title="Permalink to this headline">¶</a></h3>
+<p><center><img src='_images/L978189_17.png'></center></p>
+</div>
+<div class="section" id="how-to-compare-ope-opl-methods-in-experiments">
+<h3>How to compare OPE/OPL methods in Experiments?<a class="headerlink" href="#how-to-compare-ope-opl-methods-in-experiments" title="Permalink to this headline">¶</a></h3>
+<p>In OPL experiments, you as a researcher try to propose a policy learning method that can lead to a better policy value than existing methods.</p>
+<p>OPL performance measure:</p>
+<div class="math notranslate nohighlight">
+\[V(\pi_\phi) \coloneqq \mathop{\mathbb{E}}_{p(x)\pi_\phi(a \vert x)p(r \vert x,a)}[r]\]</div>
+<p>We have to evaluate the policy value of the proposed and baseline policies and compare.</p>
+<p>In OPE experiments, you as a researcher try to propose a OPE estimator that can lead to an accurate MSE (lower MSE) than existing estimators.</p>
+<p>OPE performance measure:</p>
+<div class="math notranslate nohighlight">
+\[MSE(\hat{V};\pi_e) \coloneqq \mathop{\mathbb{E}}_\mathcal{D_0}[(V(\pi_e)-\hat{V}(\pi_e;\mathcal{D}_0,\theta))^2]\]</div>
+<p>We have to evaluate the MSE of the proposed and baseline estimators and compare.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "sparsh-ai/ope-rec",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="US773842_Off_Policy_Evaluation.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Off-Policy Evaluation</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Sparsh A.<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
