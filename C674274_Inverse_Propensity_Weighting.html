@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Counterfactual policy evaluation &#8212; ope-rec</title>
+    <title>Inverse Propensity Weighting &#8212; ope-rec</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -53,8 +53,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Evaluating non-stationary policies" href="L845850_Evaluating_non_stationary_policies.html" />
-    <link rel="prev" title="Off-Policy Evaluation" href="US773842_Off_Policy_Evaluation.html" />
+    <link rel="next" title="Doubly Robust" href="C235655_Doubly_Robust.html" />
+    <link rel="prev" title="Direct method" href="C862189_Direct_method.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -95,9 +95,9 @@
   Concepts
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="L978189_Counterfactual_Policy_Evaluation.html">
    Counterfactual policy evaluation
   </a>
  </li>
@@ -141,14 +141,14 @@
   Models
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="C862189_Direct_method.html">
    Direct method
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="C674274_Inverse_Propensity_Weighting.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Inverse Propensity Weighting
   </a>
  </li>
@@ -198,7 +198,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/L978189_Counterfactual_Policy_Evaluation.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/C674274_Inverse_Propensity_Weighting.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -223,7 +223,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/sparsh-ai/ope-rec/main?urlpath=tree/docs/L978189_Counterfactual_Policy_Evaluation.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/sparsh-ai/ope-rec/main?urlpath=tree/docs/C674274_Inverse_Propensity_Weighting.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -231,7 +231,7 @@
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/sparsh-ai/ope-rec/blob/main/docs/L978189_Counterfactual_Policy_Evaluation.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/sparsh-ai/ope-rec/blob/main/docs/C674274_Inverse_Propensity_Weighting.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -248,51 +248,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#general-formulation-contextual-bandits">
-   General Formulation: Contextual Bandits
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dm-vs-ips-bias-variance-trade-off">
-   DM vs IPS: Bias-Variance Trade-off
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cips-and-snips-techniques-to-contain-the-ips-large-weights">
-   CIPS and SNIPS - techniques to contain the IPS large weights
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary-of-ope-estimators">
-   Summary of OPE Estimators
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#combinatorial-action">
-   Combinatorial Action
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ips-iips-and-rips">
-     IPS, IIPS and RIPS
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-compare-ope-opl-methods-in-experiments">
-     How to compare OPE/OPL methods in Experiments?
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -301,106 +256,29 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="counterfactual-policy-evaluation">
-<h1>Counterfactual policy evaluation<a class="headerlink" href="#counterfactual-policy-evaluation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="general-formulation-contextual-bandits">
-<h2>General Formulation: Contextual Bandits<a class="headerlink" href="#general-formulation-contextual-bandits" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>Observes context vector <span class="math notranslate nohighlight">\(x\)</span> (e.g., user info)</p></li>
-<li><p>Policy π selects an action <span class="math notranslate nohighlight">\(y\)</span> (e.g., recommend specific item)</p></li>
-<li><p>Observes reward/feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span> (e.g., click indicator)</p></li>
-</ol>
-<p><center><img src='_images/L978189_1.png'></center></p>
-<p>Music voice assistant</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: User and speech</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Track that is played</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Listened to the end</p>
-<p>Netflix banner</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: User profile, time of day, day of week</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Movie to put in banner</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Click, complete views, etc.</p>
-<p>YouTube recommendations</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: Current video, user demographics, past interactions</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Ranking of recommended videos</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Click, downstream dwell time, etc.</p>
-<p>News recommender</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: User</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Portfolio of news articles</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Reading time in minutes</p>
-<p>Hiring</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: Set of candidates, job description</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Person that is hired</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Job performance of <span class="math notranslate nohighlight">\(y\)</span></p>
-<p>Medical</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: Diagnostics</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: BP/Stent/Drugs</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Survival</p>
-<p>Search engine</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: Query</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Ranking</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Clicks on SERP</p>
-<p>Ad placement</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: User, page</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Placed Ad</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Click/No click</p>
-<p>Online retail</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: Category</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Tile layout</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Purchases</p>
-<p>Streaming media</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: User</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Carousel layout</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Plays</p>
-</div>
-<div class="section" id="dm-vs-ips-bias-variance-trade-off">
-<h2>DM vs IPS: Bias-Variance Trade-off<a class="headerlink" href="#dm-vs-ips-bias-variance-trade-off" title="Permalink to this headline">¶</a></h2>
-<p><center><img src='_images/L978189_2.png'></center></p>
-</div>
-<div class="section" id="cips-and-snips-techniques-to-contain-the-ips-large-weights">
-<h2>CIPS and SNIPS - techniques to contain the IPS large weights<a class="headerlink" href="#cips-and-snips-techniques-to-contain-the-ips-large-weights" title="Permalink to this headline">¶</a></h2>
-<p><center><img src='_images/L978189_3.png'></center></p>
-<p><center><img src='_images/L978189_4.png'></center></p>
-<p><center><img src='_images/L978189_5.png'></center></p>
-<p><center><img src='_images/L978189_6.png'></center></p>
-<p><center><img src='_images/L978189_7.png'></center></p>
-<p><center><img src='_images/L978189_8.png'></center></p>
-<p><center><img src='_images/L978189_9.png'></center></p>
-<p>DM vs IPS vs CIPS vs SNIPS (varying sample size).</p>
-</div>
-<div class="section" id="summary-of-ope-estimators">
-<h2>Summary of OPE Estimators<a class="headerlink" href="#summary-of-ope-estimators" title="Permalink to this headline">¶</a></h2>
-<p><center><img src='_images/L978189_10.png'></center></p>
-<p><center><img src='_images/L978189_11.png'></center></p>
-</div>
-<div class="section" id="combinatorial-action">
-<h2>Combinatorial Action<a class="headerlink" href="#combinatorial-action" title="Permalink to this headline">¶</a></h2>
-<p>In practice, the action space is often combinatorial, and a policy has to choose a set of (discrete) actions at the same time:</p>
-<p><center><img src='_images/L978189_12.png'></center></p>
-<p>We have to modify the formulation a little bit, to adjust to the combinatorial setting:</p>
-<p><center><img src='_images/L978189_13.png'></center></p>
-<p>Even in the combinatorial action setting, we can (naively) use the IPS estimator to get unbiased/consistent estimate:</p>
-<p><center><img src='_images/L978189_14.png'></center></p>
-<p><center><img src='_images/L978189_15.png'></center></p>
-<p><center><img src='_images/L978189_16.png'></center></p>
-<div class="section" id="ips-iips-and-rips">
-<h3>IPS, IIPS and RIPS<a class="headerlink" href="#ips-iips-and-rips" title="Permalink to this headline">¶</a></h3>
-<p><center><img src='_images/L978189_17.png'></center></p>
-</div>
-<div class="section" id="how-to-compare-ope-opl-methods-in-experiments">
-<h3>How to compare OPE/OPL methods in Experiments?<a class="headerlink" href="#how-to-compare-ope-opl-methods-in-experiments" title="Permalink to this headline">¶</a></h3>
-<p>In OPL experiments, you as a researcher try to propose a policy learning method that can lead to a better policy value than existing methods.</p>
-<p>OPL performance measure:</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="inverse-propensity-weighting">
+<h1>Inverse Propensity Weighting<a class="headerlink" href="#inverse-propensity-weighting" title="Permalink to this headline">¶</a></h1>
+<p>One way to correct for the bias due to the difference between exploration and target policies is to re-weight each historical instance by its probability of occurring under the exploration policy.</p>
+<p>With this technique, a synthetic dataset is created, which only contains instances where the recommended actions from the exploration policy and target policy match (by chance). Instances where they do not match are discarded. This synthetic dataset represents counterfactual results, as they approximate what would have happened if the target policy had been deployed. However, a correction needs to be applied to this dataset, due to the aforementioned difference between exploration and target policies. This correction is applied by dividing the reward of each instance by the probability of occurring under the exploration policy (or multiplying by its inverse propensity). This is illustrated below.</p>
+<p><center><img src='_images/C674274_1.png'></center></p>
+<p>The expected average reward is sum of the re-weighted rewards divided by the number of historical instance (not just the ones with matching actions).</p>
+<p>While this technique is unbiased, it uses the historical data inefficiently, because instances where the actions under exploration and target policies do not match must be discarded. The resulting synthetic dataset tends to be much smaller than the historical dataset, which results in higher uncertainty (variance) in the corresponding reward estimates.</p>
+<p>IPS evaluates a new policy by correcting the action distribution mismatch between the new policy and the policy that generated the data (logging policy). To put it another way, if your existing logging policy had a high chance of doing something good, but your new policy has a small chance of taking that same action, the new policy would be penalized. Conversely, if your existing logging policy had a high chance of taking a bad action and your new policy has a lower chance, this is good for the new policy. Reward for more good, penalize for more bad.</p>
+<p><center><img src='_images/C674274_2.png'></center></p>
+<p>Formally, the IPS estimate is defined as follows:</p>
 <div class="math notranslate nohighlight">
-\[V(\pi_\phi) \coloneqq \mathop{\mathbb{E}}_{p(x)\pi_\phi(a \vert x)p(r \vert x,a)}[r]\]</div>
-<p>We have to evaluate the policy value of the proposed and baseline policies and compare.</p>
-<p>In OPE experiments, you as a researcher try to propose a OPE estimator that can lead to an accurate MSE (lower MSE) than existing estimators.</p>
-<p>OPE performance measure:</p>
-<div class="math notranslate nohighlight">
-\[MSE(\hat{V};\pi_e) \coloneqq \mathop{\mathbb{E}}_\mathcal{D_0}[(V(\pi_e)-\hat{V}(\pi_e;\mathcal{D}_0,\theta))^2]\]</div>
-<p>We have to evaluate the MSE of the proposed and baseline estimators and compare.</p>
-</div>
-</div>
-</div>
+\[\hat{V}_{IPS} = \dfrac{1}{n}\sum_{k=1}^{n}\dfrac{\pi_e(a_k\vert x_k)}{\pi_0(a_k\vert x_k)}\cdot{r_k}‎
+\]</div>
+<p>Where,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\hat{V}_{IPS}\)</span> = the expected average reward per decision under the new policy</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> = the number of samples in your historical data</p></li>
+<li><p><span class="math notranslate nohighlight">\(\pi_e(a_k\vert x_k)\)</span> = the probability that your new policy takes the logged action given the logged context</p></li>
+<li><p><span class="math notranslate nohighlight">\(\pi_0(a_k\vert x_k)\)</span> = the probability that your logging policy takes the logged action given the logged context</p></li>
+<li><p><span class="math notranslate nohighlight">\(r_k\)</span> = the logged reward from taking that action given that context</p></li>
+</ul>
+<p><strong>IPS Corrects Probability Shift</strong></p>
+<p><center><img src='_images/C674274_3.png'></center></p></div>
 
     <script type="text/x-thebe-config">
     {
@@ -432,19 +310,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="US773842_Off_Policy_Evaluation.html" title="previous page">
+        <a class="left-prev" href="C862189_Direct_method.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Off-Policy Evaluation</p>
+                <p class="prevnext-title">Direct method</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="L845850_Evaluating_non_stationary_policies.html" title="next page">
+        <a class="right-next" href="C235655_Doubly_Robust.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Evaluating non-stationary policies</p>
+                <p class="prevnext-title">Doubly Robust</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

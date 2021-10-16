@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Counterfactual policy evaluation &#8212; ope-rec</title>
+    <title>Evaluating non-stationary policies &#8212; ope-rec</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -42,8 +42,6 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe,.cell"
@@ -53,8 +51,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Evaluating non-stationary policies" href="L845850_Evaluating_non_stationary_policies.html" />
-    <link rel="prev" title="Off-Policy Evaluation" href="US773842_Off_Policy_Evaluation.html" />
+    <link rel="next" title="Online vs Offline Evaluation" href="L036590_Online_vs_Offline_Evaluation.html" />
+    <link rel="prev" title="Counterfactual policy evaluation" href="L978189_Counterfactual_Policy_Evaluation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -96,13 +94,13 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="L978189_Counterfactual_Policy_Evaluation.html">
    Counterfactual policy evaluation
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="L845850_Evaluating_non_stationary_policies.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Evaluating non-stationary policies
   </a>
  </li>
@@ -198,7 +196,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/L978189_Counterfactual_Policy_Evaluation.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/L845850_Evaluating_non_stationary_policies.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -223,7 +221,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/sparsh-ai/ope-rec/main?urlpath=tree/docs/L978189_Counterfactual_Policy_Evaluation.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/sparsh-ai/ope-rec/main?urlpath=tree/docs/L845850_Evaluating_non_stationary_policies.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -231,7 +229,7 @@
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/sparsh-ai/ope-rec/blob/main/docs/L978189_Counterfactual_Policy_Evaluation.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/sparsh-ai/ope-rec/blob/main/docs/L845850_Evaluating_non_stationary_policies.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -254,41 +252,9 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#general-formulation-contextual-bandits">
-   General Formulation: Contextual Bandits
+  <a class="reference internal nav-link" href="#references">
+   References
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dm-vs-ips-bias-variance-trade-off">
-   DM vs IPS: Bias-Variance Trade-off
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cips-and-snips-techniques-to-contain-the-ips-large-weights">
-   CIPS and SNIPS - techniques to contain the IPS large weights
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary-of-ope-estimators">
-   Summary of OPE Estimators
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#combinatorial-action">
-   Combinatorial Action
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ips-iips-and-rips">
-     IPS, IIPS and RIPS
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-compare-ope-opl-methods-in-experiments">
-     How to compare OPE/OPL methods in Experiments?
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -301,104 +267,20 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="counterfactual-policy-evaluation">
-<h1>Counterfactual policy evaluation<a class="headerlink" href="#counterfactual-policy-evaluation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="general-formulation-contextual-bandits">
-<h2>General Formulation: Contextual Bandits<a class="headerlink" href="#general-formulation-contextual-bandits" title="Permalink to this headline">¶</a></h2>
+  <div class="tex2jax_ignore mathjax_ignore section" id="evaluating-non-stationary-policies">
+<h1>Evaluating non-stationary policies<a class="headerlink" href="#evaluating-non-stationary-policies" title="Permalink to this headline">¶</a></h1>
+<p>Many decision-making algorithms perform online learning, where an internal model is continuously updated. Such policies are nonstationary, because they depend on the history of contexts, as well as the current context. These policies are more difficult to evaluate, because of their interactive nature.</p>
+<p>The current best practice for evaluating non-stationary policies is called <em>doubly robust nonstationary</em>, as it extends the doubly robust technique. The nonstationarity is handled by replaying the target policy iteratively over the historical data with rejection sampling, which is a way to simulate data from an unknown distribution.</p>
+<p>The technique works by iterating over the historical data and probabilistically accepting/rejecting instances to include in the synthetic dataset. By performing this rejection sampling iteratively over the historical data, the nonstationary policy under evaluation can be updated for each instance, thereby simulating online learning. In contrast, the techniques for stationary policies in the previous sections involved non-iterative, batch calculations on the entire historical dataset.</p>
+<p>The rejection sampling is done in proportion to exploration and target action probabilities. Specifically, it tends to reject instances with actions that are more likely in exploration than target policies, so that the distribution of accepted instances more closely matches the target policy, rather than the exploration policy.</p>
+<p>To minimise the variance in this technique, it efficiently uses all historical instances (accepted or rejected) in the doubly robust reward estimate. These reward estimates are averaged over each round, to further lower the variance. To control the bias in this technique, there are tunable parameters to control the level of bias in the estimate (at the cost of more or less efficient use of the historical data). The result is an evaluator that balances bias and variance, enabling nonstationary policies to be evaluated on historical data.</p>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p>Observes context vector <span class="math notranslate nohighlight">\(x\)</span> (e.g., user info)</p></li>
-<li><p>Policy π selects an action <span class="math notranslate nohighlight">\(y\)</span> (e.g., recommend specific item)</p></li>
-<li><p>Observes reward/feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span> (e.g., click indicator)</p></li>
+<li><p><a class="reference external" href="https://ambiata.com/blog/2020-10-27-off-policy-evaluation/">https://ambiata.com/blog/2020-10-27-off-policy-evaluation/</a></p></li>
+<li><p><a class="reference external" href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/paper-14.pdf">Doubly Robust Policy Evaluation and Optimization</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1003.0146.pdf">A Contextual-Bandit Approach to Personalized News Article Recommendation</a></p></li>
 </ol>
-<p><center><img src='_images/L978189_1.png'></center></p>
-<p>Music voice assistant</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: User and speech</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Track that is played</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Listened to the end</p>
-<p>Netflix banner</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: User profile, time of day, day of week</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Movie to put in banner</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Click, complete views, etc.</p>
-<p>YouTube recommendations</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: Current video, user demographics, past interactions</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Ranking of recommended videos</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Click, downstream dwell time, etc.</p>
-<p>News recommender</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: User</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Portfolio of news articles</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Reading time in minutes</p>
-<p>Hiring</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: Set of candidates, job description</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Person that is hired</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Job performance of <span class="math notranslate nohighlight">\(y\)</span></p>
-<p>Medical</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: Diagnostics</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: BP/Stent/Drugs</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Survival</p>
-<p>Search engine</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: Query</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Ranking</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Clicks on SERP</p>
-<p>Ad placement</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: User, page</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Placed Ad</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Click/No click</p>
-<p>Online retail</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: Category</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Tile layout</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Purchases</p>
-<p>Streaming media</p>
-<p>Context <span class="math notranslate nohighlight">\(x\)</span>: User</p>
-<p>Action <span class="math notranslate nohighlight">\(y\)</span>: Carousel layout</p>
-<p>Feedback <span class="math notranslate nohighlight">\(\delta(x,y)\)</span>: Plays</p>
-</div>
-<div class="section" id="dm-vs-ips-bias-variance-trade-off">
-<h2>DM vs IPS: Bias-Variance Trade-off<a class="headerlink" href="#dm-vs-ips-bias-variance-trade-off" title="Permalink to this headline">¶</a></h2>
-<p><center><img src='_images/L978189_2.png'></center></p>
-</div>
-<div class="section" id="cips-and-snips-techniques-to-contain-the-ips-large-weights">
-<h2>CIPS and SNIPS - techniques to contain the IPS large weights<a class="headerlink" href="#cips-and-snips-techniques-to-contain-the-ips-large-weights" title="Permalink to this headline">¶</a></h2>
-<p><center><img src='_images/L978189_3.png'></center></p>
-<p><center><img src='_images/L978189_4.png'></center></p>
-<p><center><img src='_images/L978189_5.png'></center></p>
-<p><center><img src='_images/L978189_6.png'></center></p>
-<p><center><img src='_images/L978189_7.png'></center></p>
-<p><center><img src='_images/L978189_8.png'></center></p>
-<p><center><img src='_images/L978189_9.png'></center></p>
-<p>DM vs IPS vs CIPS vs SNIPS (varying sample size).</p>
-</div>
-<div class="section" id="summary-of-ope-estimators">
-<h2>Summary of OPE Estimators<a class="headerlink" href="#summary-of-ope-estimators" title="Permalink to this headline">¶</a></h2>
-<p><center><img src='_images/L978189_10.png'></center></p>
-<p><center><img src='_images/L978189_11.png'></center></p>
-</div>
-<div class="section" id="combinatorial-action">
-<h2>Combinatorial Action<a class="headerlink" href="#combinatorial-action" title="Permalink to this headline">¶</a></h2>
-<p>In practice, the action space is often combinatorial, and a policy has to choose a set of (discrete) actions at the same time:</p>
-<p><center><img src='_images/L978189_12.png'></center></p>
-<p>We have to modify the formulation a little bit, to adjust to the combinatorial setting:</p>
-<p><center><img src='_images/L978189_13.png'></center></p>
-<p>Even in the combinatorial action setting, we can (naively) use the IPS estimator to get unbiased/consistent estimate:</p>
-<p><center><img src='_images/L978189_14.png'></center></p>
-<p><center><img src='_images/L978189_15.png'></center></p>
-<p><center><img src='_images/L978189_16.png'></center></p>
-<div class="section" id="ips-iips-and-rips">
-<h3>IPS, IIPS and RIPS<a class="headerlink" href="#ips-iips-and-rips" title="Permalink to this headline">¶</a></h3>
-<p><center><img src='_images/L978189_17.png'></center></p>
-</div>
-<div class="section" id="how-to-compare-ope-opl-methods-in-experiments">
-<h3>How to compare OPE/OPL methods in Experiments?<a class="headerlink" href="#how-to-compare-ope-opl-methods-in-experiments" title="Permalink to this headline">¶</a></h3>
-<p>In OPL experiments, you as a researcher try to propose a policy learning method that can lead to a better policy value than existing methods.</p>
-<p>OPL performance measure:</p>
-<div class="math notranslate nohighlight">
-\[V(\pi_\phi) \coloneqq \mathop{\mathbb{E}}_{p(x)\pi_\phi(a \vert x)p(r \vert x,a)}[r]\]</div>
-<p>We have to evaluate the policy value of the proposed and baseline policies and compare.</p>
-<p>In OPE experiments, you as a researcher try to propose a OPE estimator that can lead to an accurate MSE (lower MSE) than existing estimators.</p>
-<p>OPE performance measure:</p>
-<div class="math notranslate nohighlight">
-\[MSE(\hat{V};\pi_e) \coloneqq \mathop{\mathbb{E}}_\mathcal{D_0}[(V(\pi_e)-\hat{V}(\pi_e;\mathcal{D}_0,\theta))^2]\]</div>
-<p>We have to evaluate the MSE of the proposed and baseline estimators and compare.</p>
-</div>
 </div>
 </div>
 
@@ -432,19 +314,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="US773842_Off_Policy_Evaluation.html" title="previous page">
+        <a class="left-prev" href="L978189_Counterfactual_Policy_Evaluation.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Off-Policy Evaluation</p>
+                <p class="prevnext-title">Counterfactual policy evaluation</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="L845850_Evaluating_non_stationary_policies.html" title="next page">
+        <a class="right-next" href="L036590_Online_vs_Offline_Evaluation.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Evaluating non-stationary policies</p>
+                <p class="prevnext-title">Online vs Offline Evaluation</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
